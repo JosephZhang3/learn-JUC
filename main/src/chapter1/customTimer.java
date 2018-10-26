@@ -1,4 +1,4 @@
-package brief_introduction;
+package chapter1;
 
 import java.util.Timer;
 import java.util.TimerTask;
