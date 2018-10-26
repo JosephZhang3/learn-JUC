@@ -1,3 +1,11 @@
+#忽略IntelliJ IDEA工程文件
+#忽略所有以.iml结尾的文件
+*.iml
+#忽略.idea文件夹下的所有文件
+.idea/
+#忽略out文件夹下的所有文件
+out/
+
 # Compiled class file
 *.class
 
