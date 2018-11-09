@@ -16,7 +16,7 @@ public class SafeConter extends HttpServlet {
 
     /**
      * 使用线程安全类AtomicLong来管理计数器的状态，从而确保了代码的线程安全性。
-     * servlet的状态就是指计数器的状态，因为计数器是线程安全的，所以这里servlet也是线程安全的。
+     * servlet的状态就是指计数器的状态，因为计数器是线程安全的，所以这个servlet也是线程安全的。
      */
     private final AtomicLong count = new AtomicLong(0);
 
