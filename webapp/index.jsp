@@ -7,10 +7,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  index首页
-  </body>
+<head>
+    <title>JUC</title>
+</head>
+<body>
+Come on, dominate JUC !
+</body>
 </html>
