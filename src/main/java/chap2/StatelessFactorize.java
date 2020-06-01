@@ -1,4 +1,4 @@
-package main;
+package chap2;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
@@ -12,8 +12,8 @@ import java.math.BigInteger;
 /**
  * 一个无状态的因数分解器
  */
-@WebServlet(name = "StatelessFactorizer")
-public class StatelessFactorizer extends HttpServlet {
+@WebServlet(name = "StatelessFactorize")
+public class StatelessFactorize extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
         BigInteger i = extractFromRequest(req);

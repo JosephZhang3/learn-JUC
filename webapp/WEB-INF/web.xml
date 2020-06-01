@@ -4,19 +4,20 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>StatelessFactorizer</servlet-name>
-        <servlet-class>main.StatelessFactorizer</servlet-class>
+        <servlet-name>StatelessFactorize</servlet-name>
+        <servlet-class>chap2.StatelessFactorize</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>StatelessFactorizer</servlet-name>
-        <url-pattern>/StatelessFactorizer</url-pattern>
+        <servlet-name>StatelessFactorize</servlet-name>
+        <url-pattern>/StatelessFactorize</url-pattern>
     </servlet-mapping>
+
     <servlet>
-        <servlet-name>SafeConter</servlet-name>
-        <servlet-class>main.SafeConter</servlet-class>
+        <servlet-name>SafeCounter</servlet-name>
+        <servlet-class>chap2.SafeCounter</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SafeConter</servlet-name>
-        <url-pattern>/SafeConter</url-pattern>
+        <servlet-name>SafeCounter</servlet-name>
+        <url-pattern>/SafeCounter</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -1,4 +1,4 @@
-package main;
+package chap2;
 
 /**
  * 懒加载中存在的竞态条件

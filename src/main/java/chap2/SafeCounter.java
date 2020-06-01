@@ -1,4 +1,4 @@
-package main;
+package chap2;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,8 +11,8 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * 一个线程安全的计数器
  */
-@WebServlet(name = "SafeConter")
-public class SafeConter extends HttpServlet {
+@WebServlet(name = "SafeCounter")
+public class SafeCounter extends HttpServlet {
 
     /**
      * 使用线程安全类AtomicLong来管理计数器的状态，从而确保了代码的线程安全性。

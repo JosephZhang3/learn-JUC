@@ -1,4 +1,4 @@
-package chapter1;
+package chap2;
 
 import java.util.Timer;
 import java.util.TimerTask;
