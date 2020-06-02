@@ -16,7 +16,7 @@ import java.math.BigInteger;
 public class StatelessFactorize extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
-        BigInteger i = extractFromRequest(req);// i 是一个"无状态"的对象，因为它是临时生成的，不是一个field
+        BigInteger i = extractFromRequest(req);// i 是一个"无状态"的对象，因为它是临时生成的，而不是每个线程都能访问到的field
         BigInteger[] factors = factor(i);// 完成分解后的因数
         encodeIntoResponse(resp, factors);// print  3	5
     }

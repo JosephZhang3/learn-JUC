@@ -11,12 +11,12 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * 一个线程安全的计数器
  */
-@WebServlet(name = "SafeCounter")
+@WebServlet(urlPatterns = "/safeCounter")
 public class SafeCounter extends HttpServlet {
 
     /**
-     * 使用线程安全类AtomicLong来管理计数器的状态，从而确保了代码的线程安全性。
-     * servlet的状态就是指计数器的状态，因为计数器是线程安全的，所以这个servlet也是线程安全的。
+     * 使用线程安全类AtomicLong 原子化Long类型 来管理计数器的状态，保证代码的线程安全性
+     * servlet的状态就是指计数器的状态，计数器是线程安全的 => 这个servlet也是线程安全的
      */
     private final AtomicLong count = new AtomicLong(0);
 
@@ -28,13 +28,18 @@ public class SafeCounter extends HttpServlet {
     private void encodeIntoResponse(HttpServletResponse resp, Long result) {
 
         resp.setCharacterEncoding("utf-8");
-        resp.setHeader("content-type", "text/html;charset=UTF-8");
+        resp.setHeader("content-type", "application/json;charset=UTF-8");
+        PrintWriter pw = null;
         try {
-            PrintWriter pw = resp.getWriter();
+            pw = resp.getWriter();
+            System.out.println(result.toString());
             pw.write(result.toString());
-            //不用手动关闭字符流，servlet容器会最终自动关闭
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (pw != null) {
+                pw.close();// 虽然servlet容器会最终自动关闭，但手动关闭是一种好习惯
+            }
         }
     }
 }
