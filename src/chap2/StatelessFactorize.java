@@ -12,13 +12,13 @@ import java.math.BigInteger;
 /**
  * 一个无状态的因数分解器
  */
-@WebServlet(name = "StatelessFactorize")
+@WebServlet(urlPatterns = "/statelessFactorize")
 public class StatelessFactorize extends HttpServlet {
 
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
-        BigInteger i = extractFromRequest(req);
-        BigInteger[] factors = factor(i);//完成分解后的因数
-        encodeIntoResponse(resp, factors);
+        BigInteger i = extractFromRequest(req);// i 是一个"无状态"的对象，因为它是临时生成的，不是一个field
+        BigInteger[] factors = factor(i);// 完成分解后的因数
+        encodeIntoResponse(resp, factors);// print  3	5
     }
 
     /**
@@ -32,13 +32,13 @@ public class StatelessFactorize extends HttpServlet {
     }
 
     /**
-     * 这是一个假的因数分解器，QAQ
+     * 模拟一个因数分解器
      *
      * @param i
      * @return
      */
     private BigInteger[] factor(BigInteger i) {
-        return new BigInteger[]{i};
+        return new BigInteger[]{new BigInteger("3"),new BigInteger("5")};
     }
 
     /**
@@ -53,7 +53,7 @@ public class StatelessFactorize extends HttpServlet {
         resp.setHeader("content-type", "text/html;charset=UTF-8");
         try {
             PrintWriter pw = resp.getWriter();
-            pw.write("返回一点东西");
+            pw.write(factors[0].toString()+"\t"+factors[1].toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
