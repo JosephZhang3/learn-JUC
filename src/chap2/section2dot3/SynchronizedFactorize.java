@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 /**
- * 虽然是完全线程安全的，但是会有线程活跃性问题
+ * 虽然是完全线程安全的，但是会有线程活跃性 liveness 问题（某个时刻只能有一个线程执行同步代码块）
  *
  * @author jianghao.zhang
  */
