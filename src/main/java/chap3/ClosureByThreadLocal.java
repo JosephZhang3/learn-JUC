@@ -8,6 +8,7 @@ public class ClosureByThreadLocal {
     static String DB_URL = "jdbc:mysql://localhost/mydatabase";
 
     // 注意是静态的！
+    // ThreadLocal变量类似于全局变量，可以理解成它对全局变量做了重新组织，每个线程拥有自己的一套全局变量，线程间互不影响
     private static ThreadLocal<Connection> connectionHolder = new ThreadLocal<Connection>() {
         @Override
         protected Connection initialValue() {
@@ -21,7 +22,7 @@ public class ClosureByThreadLocal {
     };
 
     public Connection getConnection() {
-        // 原理：ThreadLocal类持有特定变量（比如一个 Connection 连接对象），它的 get() 方法为每个使用特定变量的线程保存一份独立的副本
+        // 原理：ThreadLocal类持有特定变量（它的泛型标识中的类，比如一个 Connection 连接对象），它的 get() 方法为每个使用特定变量的线程保存一份独立的副本
         // 因此，get() 方法总是返回的是当前执行线程在前一次调用 set() 方法时设置的最新值
         return connectionHolder.get();
     }
