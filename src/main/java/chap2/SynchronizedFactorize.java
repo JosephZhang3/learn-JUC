@@ -1,4 +1,4 @@
-package chap2.section2dot3;
+package chap2;
 
 import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
