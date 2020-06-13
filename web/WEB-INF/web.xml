@@ -3,31 +3,4 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0" metadata-complete="false">
-
-<!--    <servlet>-->
-<!--        <servlet-name>StatelessFactorize</servlet-name>-->
-<!--        <servlet-class>chap2.StatelessFactorize</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>StatelessFactorize</servlet-name>-->
-<!--        <url-pattern>/StatelessFactorize</url-pattern>-->
-<!--    </servlet-mapping>-->
-
-<!--    <servlet>-->
-<!--        <servlet-name>SafeCounter</servlet-name>-->
-<!--        <servlet-class>chap2.SafeCounter</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>SafeCounter</servlet-name>-->
-<!--        <url-pattern>/SafeCounter</url-pattern>-->
-<!--    </servlet-mapping>-->
-
-<!--    <servlet>-->
-<!--        <servlet-name>unsafeCounter</servlet-name>-->
-<!--        <servlet-class>chap2.UnsafeCounter</servlet-class>-->
-<!--    </servlet>-->
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>unsafeCounter</servlet-name>-->
-<!--        <url-pattern>/unsafeCounter</url-pattern>-->
-<!--    </servlet-mapping>-->
 </web-app>
