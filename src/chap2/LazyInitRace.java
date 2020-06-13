@@ -1,7 +1,7 @@
 package chap2;
 
 /**
- * 懒加载中存在的竞态条件
+ * 懒加载中存在的竞态条件(单例模式--懒汉模式)
  */
 public class LazyInitRace {
     private ExpensiveObject instance = null;
