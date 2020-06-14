@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
  *
  * @author jianghao.zhang
  */
-@WebServlet(urlPatterns = "/UnsafeCounter")
+@WebServlet(urlPatterns = "/CountingFactorize")
 @NotThreadSafe
 public class CountingFactorize implements Servlet {
 
