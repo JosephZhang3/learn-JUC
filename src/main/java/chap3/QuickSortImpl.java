@@ -1,5 +1,10 @@
 package chap3;
 
+/**
+ * 快速排序
+ *
+ * @author jianghao.zhang
+ */
 public class QuickSortImpl {
 
     public static void main(String[] args) {
