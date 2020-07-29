@@ -105,7 +105,7 @@ public class ProducerConsumer {
     }
 
     public static void main(String[] args) {
-        File[] files = new File[2];
+        File[] files = new File[2];// 其实是两个目录
         files[0] = new File("/Users/mac/IdeaProjects/mcs-admin");
         files[1] = new File("/Users/mac/IdeaProjects/scfs");
         startIndexing(files);
