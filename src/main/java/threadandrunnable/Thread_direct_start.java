@@ -1,15 +1,10 @@
 package threadandrunnable;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 public class Thread_direct_start {
     public static void main(String[] args) {
         ThreadTest t = new ThreadTest();
         t.start();
-//        t.start();
-//        t.start();
-//        t.start();
-//        t.start();
+        t.start();
 /*
 控制台输出结果如下：
 
@@ -43,21 +38,5 @@ public synchronized void start() {
 
 如果把多余的 start() 方法都注释掉，只保留一个，就不会有异常。但是，这个程序依然是单线程的，继承Thread就没有任何意义
 */
-    }
-}
-
-class ThreadTest extends Thread {
-    private final AtomicInteger n = new AtomicInteger(10);
-
-    @Override
-    public void run() {
-        while (n.get() > 0) {
-            System.out.println(
-                    "Thread id is " +
-                            Thread.currentThread().getId() + " ,"
-                            + "Thread name is " +
-                            Thread.currentThread().getName()
-                            + " ,this is the " + n.getAndDecrement() + " time call run method.");// n先作为表达式的值，然后再自减
-        }
     }
 }
