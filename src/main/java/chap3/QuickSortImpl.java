@@ -26,13 +26,16 @@ class QuickSort {
     public void sort(int[] arr, int low, int high) {
         if (low < high) {
             int n;
-            n = sortKey(arr, low, high);
+            // 基准点
+            n = partition(arr, low, high);
+            // 向左
             sort(arr, low, n - 1);
+            // 向右
             sort(arr, n + 1, high);
         }
     }
 
-    public int sortKey(int[] arr, int low, int high) {
+    public int partition(int[] arr, int low, int high) {
         int key = arr[low];
         while (low < high) {
             while (low < high && arr[high] >= key) {
