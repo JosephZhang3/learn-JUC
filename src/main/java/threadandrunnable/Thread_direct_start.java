@@ -1,13 +1,15 @@
 package threadandrunnable;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Thread_direct_start {
     public static void main(String[] args) {
         ThreadTest t = new ThreadTest();
         t.start();
-        t.start();
-        t.start();
-        t.start();
-        t.start();
+//        t.start();
+//        t.start();
+//        t.start();
+//        t.start();
 /*
 控制台输出结果如下：
 
@@ -28,7 +30,7 @@ Thread id is 11 ,Thread name is Thread-0 ,this is the 1 time call run method.
 Process finished with exit code 1
 
 调用多次start方法，实际上只启动了一个线程，还抛了异常 IllegalThreadStateException
-而当把代码修改成仅仅调用一次start方法，就不会抛异常，输出跟之前调多次一致。
+而当把代码修改成仅仅调用一次start方法，就不会抛异常，输出跟之前调多次是一致的。
 这是为什么？
 我们可以debug跟进到报异常的代码，如下：
 
@@ -37,22 +39,25 @@ public synchronized void start() {
         if (threadStatus != 0)
             throw new IllegalThreadStateException();
 
-因为先前调用过一次start方法，线程的状态由初始化的0变成了RUNNABLE非0，所以在第二次调用时，会throw异常结束主线程main方法
+因为第一次调用start方法后，线程的状态由初始化的0变成了RUNNABLE非0，所以在第二次调用start时，会throw异常结束主线程main方法
+
+如果把多余的 start() 方法都注释掉，只保留一个，就不会有异常。但是，这个程序依然是单线程的，继承Thread就没有任何意义
 */
     }
 }
 
 class ThreadTest extends Thread {
-    private int n = 10;
+    private final AtomicInteger n = new AtomicInteger(10);
 
+    @Override
     public void run() {
-        while (n > 0) {
+        while (n.get() > 0) {
             System.out.println(
                     "Thread id is " +
                             Thread.currentThread().getId() + " ,"
                             + "Thread name is " +
                             Thread.currentThread().getName()
-                            + " ,this is the " + n-- + " time call run method.");// n先作为表达式的值，然后再自减
+                            + " ,this is the " + n.getAndDecrement() + " time call run method.");// n先作为表达式的值，然后再自减
         }
     }
 }

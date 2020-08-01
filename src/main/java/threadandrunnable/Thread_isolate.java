@@ -2,9 +2,9 @@ package threadandrunnable;
 
 public class Thread_isolate {
     public static void main(String[] args) {
-        new ThreadTest2().start();
-        new ThreadTest2().start();
-        new ThreadTest2().start();
+        new ThreadTest().start();
+        new ThreadTest().start();
+        new ThreadTest().start();
 //        new ThreadTest2().start();
 //        new ThreadTest2().start();
 /*
@@ -42,20 +42,5 @@ Thread id is 12, Thread name is Thread-1, this is the 1 time call run method.
 
 仔细观察就可以发现，new 出来的3个线程 Thread-0 Thread-1 Thread-2 ，但是这3个线程互不影响，每个都独占一份资源变量 n ，从初始的10递减到1
  */
-    }
-}
-
-class ThreadTest2 extends Thread {
-    private int n = 10;
-
-    public void run() {
-        while (n > 0) {
-            System.out.println(
-                    "Thread id is " +
-                            Thread.currentThread().getId() + ", "
-                            + "Thread name is " +
-                            Thread.currentThread().getName()
-                            + ", this is the " + n-- + " time call run method.");// n先作为表达式的值，然后再自减
-        }
     }
 }

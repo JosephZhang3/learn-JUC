@@ -1,8 +1,10 @@
 package threadandrunnable;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Thread_share {
     public static void main(String[] args) {
-        ThreadTest3 t = new ThreadTest3();
+        RunnableTest t = new RunnableTest();
         new Thread(t).start();
         new Thread(t).start();
         new Thread(t).start();
@@ -31,17 +33,18 @@ new 关键字创建了3个线程 Thread-1 Thread-2 Thread-3，这3个线程执�
     }
 }
 
-class ThreadTest3 extends Thread {
-    private int n = 10;
+class RunnableTest implements Runnable {
+    private final AtomicInteger n = new AtomicInteger(10);
 
+    @Override
     public void run() {
-        while (n > 0) {
+        while (n.get() > 0) {
             System.out.println(
                     "Thread id is " +
                             Thread.currentThread().getId() + " ,"
                             + "Thread name is " +
                             Thread.currentThread().getName()
-                            + " ,this is the " + n-- + " time call run method.");// n先作为表达式的值，然后再自减
+                            + " ,this is the " + n.getAndDecrement() + " time call run method.");// n先作为表达式的值，然后再自减
         }
     }
 }
