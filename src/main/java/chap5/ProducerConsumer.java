@@ -6,6 +6,12 @@ import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.LinkedBlockingDeque;
 
+/**
+ * BlockingDeque 的 take() 方法和 put() 方法都会抛出 Checked Exception （Interrupted Exception）
+ * 因为 take() 方法和 put() 方法都是阻塞方法，即它们有可能处于等待状态，
+ *
+ * @author jianghao.zhang
+ */
 public class ProducerConsumer {
 
     // 并发安全set，存储已经放入索引的文件的全路径名
@@ -61,10 +67,10 @@ public class ProducerConsumer {
      */
     static class Indexer implements Runnable {
 
-        private final BlockingDeque<File> queue;
+        private final BlockingDeque<File> fileQueue;
 
-        Indexer(BlockingDeque<File> queue) {
-            this.queue = queue;
+        Indexer(BlockingDeque<File> fileQueue) {
+            this.fileQueue = fileQueue;
         }
 
         @Override
@@ -72,7 +78,7 @@ public class ProducerConsumer {
             // 自旋锁，永不停止
             while (true) {
                 try {
-                    indexFile(queue.take());
+                    indexFile(fileQueue.take());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
