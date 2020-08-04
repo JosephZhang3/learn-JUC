@@ -45,6 +45,8 @@ public class ProducerConsumer {
             }
         }
 
+        // 中断，指尝试停止某个线程的执行，即抢夺该线程的CPU时间片
+        // 抛出中断异常时（方法被中断失败），会提前结束阻塞状态，也就是抗拒中断，继续自顾自地执行下去
         private void crawl(File root) throws InterruptedException {
             File[] entries = root.listFiles(fileFilter);
             if (entries != null) {
