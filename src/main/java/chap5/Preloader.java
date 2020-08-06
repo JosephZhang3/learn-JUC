@@ -37,6 +37,19 @@ public class Preloader {
         return futureTask.get();
     }
 
+    /**
+     * 清洗异常，返回或者直接抛出未检查异常
+     */
+    public static RuntimeException launderThrowable(Throwable t) {
+        if (t instanceof RuntimeException) {// 继承自 TestHarness 的 unchecked 类型的异常
+            return (RuntimeException) t;
+        } else if (t instanceof Error) {// 继承自 Exception 但是 不继承自 RuntimeException 的 unchecked 类型的异常
+            throw (Error) t;
+        } else {
+            throw new IllegalStateException("not unchecked", t);
+        }
+    }
+
     public static void main(String[] args) {
         Preloader preloader = new Preloader();
         preloader.start();
