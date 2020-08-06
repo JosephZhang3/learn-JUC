@@ -20,20 +20,24 @@ public class Preloader {
         }
     });
 
-    // 给任务绑定线程
+    // 给任务绑定副线程
     private final Thread t = new Thread(futureTask);
 
-    // 启动线程（即开始任务）
+    /**
+     * 启动线程（即开始任务）
+     */
     public void start() {
         t.start();
     }
 
-    // 查询任务跑完的结果，如果没跑完，阻塞主线程（停滞）直到得到结果或者超时
+    /**
+     * 查询任务跑完的结果，如果没跑完，会阻塞主线程（停滞）直到得到结果或者超时
+     */
     public Product getResult() throws ExecutionException, InterruptedException {
         return futureTask.get();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Preloader preloader = new Preloader();
         preloader.start();
 
