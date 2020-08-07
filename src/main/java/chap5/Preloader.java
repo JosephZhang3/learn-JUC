@@ -39,8 +39,10 @@ public class Preloader {
         } catch (ExecutionException e) {
             Throwable cause = e.getCause();
             if (cause instanceof DataLoadException) {
+                // 已知的 checked 异常，直接抛出
                 throw (DataLoadException) cause;
             } else {
+                // 尝试抛出 unchecked 异常，可能判断出不是 unchecked 异常，那么就抛出 IllegalStateException
                 throw launderThrowable(cause);
             }
         }
