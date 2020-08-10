@@ -103,7 +103,7 @@ class Product {
 }
 
 /**
- * checked exception
+ * checked exception ，已检查异常，继承自 Exception
  */
 class DataLoadException extends Exception {
 }
