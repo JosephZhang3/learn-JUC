@@ -11,10 +11,13 @@ import java.math.BigInteger;
 
 /**
  * 一个无状态的因数分解器
+ *
+ * @author jianghao.zhang
  */
 @WebServlet(urlPatterns = "/statelessFactorize")
 public class StatelessFactorize extends HttpServlet {
 
+    @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) {
         BigInteger i = extractFromRequest(req);// i 是一个"无状态"的对象，因为它是临时生成的，而不是每个线程都能访问到的field
         BigInteger[] factors = factor(i);// 完成分解后的因数
@@ -47,7 +50,7 @@ public class StatelessFactorize extends HttpServlet {
      * @param resp
      * @param factors
      */
-    private void encodeIntoResponse(HttpServletResponse resp, BigInteger[] factors) {
+    private static void encodeIntoResponse(HttpServletResponse resp, BigInteger[] factors) {
 
         resp.setCharacterEncoding("utf-8");
         resp.setHeader("content-type", "text/html;charset=UTF-8");
