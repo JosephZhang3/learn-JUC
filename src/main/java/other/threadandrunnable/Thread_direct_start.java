@@ -1,4 +1,4 @@
-package threadandrunnable;
+package other.threadandrunnable;
 
 public class Thread_direct_start {
     public static void main(String[] args) {
@@ -10,7 +10,7 @@ public class Thread_direct_start {
 
 Exception in thread "main" java.lang.IllegalThreadStateException
 	at java.lang.Thread.start(Thread.java:708)
-	at threadandrunnable.MyThread.main(MyThread.java:7)
+	at other.threadandrunnable.MyThread.main(MyThread.java:7)
 Thread id is 11 ,Thread name is Thread-0 ,this is the 10 time call run method.
 Thread id is 11 ,Thread name is Thread-0 ,this is the 9 time call run method.
 Thread id is 11 ,Thread name is Thread-0 ,this is the 8 time call run method.

@@ -1,8 +1,8 @@
-package threadandrunnable;
+package other.threadandrunnable;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-class ThreadTest extends Thread {
+class RunnableTest implements Runnable {
     private final AtomicInteger n = new AtomicInteger(10);
 
     @Override

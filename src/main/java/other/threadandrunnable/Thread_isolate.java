@@ -1,4 +1,4 @@
-package threadandrunnable;
+package other.threadandrunnable;
 
 public class Thread_isolate {
     public static void main(String[] args) {

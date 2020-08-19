@@ -1,4 +1,4 @@
-package threadandrunnable;
+package other.threadandrunnable;
 
 public class Thread_share {
     public static void main(String[] args) {
