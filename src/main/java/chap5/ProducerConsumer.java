@@ -7,7 +7,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
- * BlockingDeque 的 take() 方法和 put() 方法都会抛出 Checked Exception （Interrupted Exception）
+ * 阻塞双端队列 BlockingDeque 的 take() 方法和 put() 方法都会抛出 Checked Exception （Interrupted Exception）
  * 因为 take() 方法和 put() 方法都是阻塞方法，即它们有可能处于等待状态，
  *
  * @author jianghao.zhang
