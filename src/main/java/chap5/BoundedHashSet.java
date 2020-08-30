@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.concurrent.Semaphore;
 
 /**
- * 有界阻塞容器
+ * 有界阻塞容器，借助信号量实现
  *
  * @author jianghao.zhang
  */
@@ -20,7 +20,7 @@ public class BoundedHashSet<T> {
     public BoundedHashSet(int bound) {
         // 给集合加上同步机制
         this.set = Collections.synchronizedSet(new HashSet<>());
-        // ！！！"许可"数量的最大值也是容器容量的最大值
+        // "许可"数量的最大值也是容器容量的最大值
         sem = new Semaphore(bound);
     }
 

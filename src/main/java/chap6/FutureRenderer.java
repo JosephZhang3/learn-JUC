@@ -21,7 +21,7 @@ public class FutureRenderer {
         Callable<List<ImageData>> task = () -> {
             List<ImageData> result = new ArrayList<>();
             for (ImageInfo i : imageInfos) {
-                // TODO 这个地方仍然是串行的，可以思考改进成并行
+                // 注意：这个地方仍然是串行的
                 result.add(i.downloadImage());
             }
             return result;
@@ -40,11 +40,14 @@ public class FutureRenderer {
                 renderImage(i);
             }
         } catch (InterruptedException e) {
+            // case1:任务被中断
+
             // 中断最外部的提交任务的线程
             Thread.currentThread().interrupt();
             // 取消执行任务的线程，运行取消时被中断
             downloadTask.cancel(true);
         } catch (ExecutionException e) {
+            // case2:任务执行过程出现异常
             System.out.println("原始异常：" + e.getCause());
         }
     }
