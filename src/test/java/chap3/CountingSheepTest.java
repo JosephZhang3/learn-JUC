@@ -2,9 +2,6 @@ package chap3;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 public class CountingSheepTest {
 
     @Test
@@ -16,7 +13,7 @@ public class CountingSheepTest {
     }
 
     public static void main(String[] args) {
-        // 思考：hashCode 算法的乘法基数为什是 31 ，即 2^31 -1
+        // 思考：hashCode 算法的乘法基数为什么是 31 ，即 2^31 -1
         int hashCode = "fdsfdsf我是谁dsfsd".hashCode();
         System.out.println(hashCode);
     }

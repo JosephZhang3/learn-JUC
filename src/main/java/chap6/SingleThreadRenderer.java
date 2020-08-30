@@ -30,7 +30,7 @@ public class SingleThreadRenderer {
     }
 
     private ImageInfo[] scanForImageInfo(CharSequence source) {
-        return null;
+        return new ImageInfo[0];
     }
 
     private void renderText(CharSequence source) {
