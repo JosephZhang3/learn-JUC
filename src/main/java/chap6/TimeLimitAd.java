@@ -47,7 +47,7 @@ public class TimeLimitAd {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
-            System.out.println("没取到，中途异常");
+            System.out.println("没取到，任务执行异常");
             p.setAd(DEFAULT_AD);
         } catch (TimeoutException e) {
             System.out.println("没取到，超时");
