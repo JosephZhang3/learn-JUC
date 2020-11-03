@@ -11,7 +11,7 @@ public class ThreadDeadLock {
     ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     /**
-     * 内部类，定义线程任务 读取文件
+     * 定义线程任务 读取文件
      */
     public class LoadFileTask implements Callable<String> {
         private final String fileName;
@@ -42,7 +42,7 @@ public class ThreadDeadLock {
             // 渲染主体部分
             String page = renderBody();
 
-            // 阻塞等待子任务结果，因为有可能永远等不到结果，所以有概率发生死锁
+            // 阻塞等待子任务的执行结果，因为有可能子任务无法正确执行结束，所以有概率发生死锁
             return headerFileLoad.get() + page + footerFileLoad.get();
         }
     }

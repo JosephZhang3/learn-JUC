@@ -19,10 +19,12 @@ public class SynchronizedFactorize implements Servlet {
     @GuardedBy("this")
     private BigInteger[] lastFactors;
 
+    @Override
     public void init(ServletConfig servletConfig) throws ServletException {
 
     }
 
+    @Override
     public ServletConfig getServletConfig() {
         return null;
     }
@@ -30,6 +32,7 @@ public class SynchronizedFactorize implements Servlet {
     /**
      * 注意：使用了同步关键字 synchronized
      */
+    @Override
     public synchronized void service(ServletRequest servletRequest, ServletResponse servletResponse) throws ServletException, IOException {
         BigInteger i = extractFromRequest(servletRequest);
         if (lastNumber.equals(i)) {
@@ -42,10 +45,12 @@ public class SynchronizedFactorize implements Servlet {
         encodeIntoResponse(servletResponse, factors);
     }
 
+    @Override
     public String getServletInfo() {
         return null;
     }
 
+    @Override
     public void destroy() {
 
     }
