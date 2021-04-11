@@ -42,12 +42,17 @@ public class ThreadDeadLock {
             // 渲染主体部分
             String page = renderBody();
 
-            // 阻塞等待子任务的执行结果，因为有可能子任务无法正确执行结束，所以有概率发生死锁
+            // 阻塞等待子任务的执行结果，因为有可能子任务 LoadFileTask 无法正确执行结束，所以有概率发生死锁
+            // 任务依赖子任务的场景，必然出现此类问题。解决方案：可以在父任务中设置等待超时时间，需要容错的场景下可以做重试
             return headerFileLoad.get() + page + footerFileLoad.get();
         }
     }
 
     private String renderBody() {
-        return null;
+        return "This is body content";
+    }
+
+    public static void main(String[] args){
+
     }
 }
