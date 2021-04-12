@@ -24,7 +24,7 @@ public class TestHarness {
         for (int i = 0; i < nThreads; i++) {
             Thread t = new Thread(() -> {
                 try {
-                    startGate.await();// 启动门等待计数器达到0，相当于放开闸门
+                    startGate.await();// 启动门等待计数器达到0，发令枪响
                     task.run();
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -43,8 +43,8 @@ public class TestHarness {
         return (end - start) / 1000000000.0;
     }
 
-    public static void main(String[] args) {
-        // 定义task
+    public static void main(String[] args) throws InterruptedException {
+        // 定义 Runnable task
         Runnable r = () -> {
             System.out.println("睡2秒");
             try {
@@ -54,7 +54,7 @@ public class TestHarness {
             }
         };
         try {
-            double time = new TestHarness().timeTasks(4, r);
+            double time = new TestHarness().timeTasks(20, r);
             System.out.println("总耗时" + time + "秒");
         } catch (InterruptedException e) {
             e.printStackTrace();
